@@ -4,10 +4,16 @@ import StudentList from './StudentList'
 import CampusList from './CampusList'
 import AddStudentForm from './AddStudentForm'
 import AddCampusForm from './AddCampusform'
+import {fetchAllCampuses} from '../reducers'
+import store from '../store'
 
 export default class Root extends Component {
   constructor(){
     super()
+  }
+
+  componentDidMount(){ 
+    store.dispatch(fetchAllCampuses())
   }
 
   render(){
@@ -22,7 +28,7 @@ export default class Root extends Component {
           
           <Route path="/students" component={StudentList} />
           <Route path="/add/students" component={AddStudentForm} />
-          
+
       </div>
     )
   }

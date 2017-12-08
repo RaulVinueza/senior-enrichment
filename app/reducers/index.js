@@ -1,12 +1,9 @@
 /* combineReducers is not currently used, but eventually should be for modular code :D */
 import { combineReducers } from 'redux'
+import campusReducer from './campusReducer'
 
-const initialState = {}
+export default combineReducers({
+  campuses: campusReducer
+})
 
-const rootReducer = function(state = initialState, action) {
-  switch(action.type) {
-    default: return state
-  }
-};
-
-export default rootReducer
+export * from './campusReducer'
