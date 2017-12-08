@@ -1,6 +1,8 @@
 'use strict';
 
 const db = require('../index');
+const Student = require('./Student')
+const Campus = require('./Campus')
 
 // Require all the models
 	// Running each model (i.e. table) module (i.e. file) registers each model into our sequelize db
