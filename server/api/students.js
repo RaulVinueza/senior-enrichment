@@ -1,24 +1,62 @@
 const router = require('express').Router()
-const db = require('../db')
+const Student = require('../db/models/Student')
 
 router.get('/', (req, res, next) => {
-    res.json({reply: 'getting all the students'})
+    Student.findAll()
+    .then(students => res.send(students))
+    .catch(next)
 })
 
 router.get('/:id', (req, res, next) => {
-    res.json({studentSelected: req.params.id})
+    Student.findById(req.params.id)
+    .then(student => res.send(student))
+    .catch(next)
 })
 
 router.post('/', (req, res, next) => {
-    res.json(req.body)
+    Student.create({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        gpa: req.body.gpa
+    })
+    .then(student => res.send(student))
+    .catch(next)
 })
 
 router.put('/:id', (req, res, next) => {
-    res.json(req.body)
+    Student.update({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        gpa: req.body.gpa
+    }, {
+        where: {
+            id: req.params.id
+        }
+    }).then(() => res.sendStatus(202))
+    .catch(next)
 })
 
 router.delete('/:id', (req, res, next) => {
-    res.json(req.body)
+    Student.destroy({
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(() => res.sendStatus(202))
+    .catch(next)
 })
 
 module.exports = router
+
+
+//for testing
+
+
+// {
+// 	"firstName": "Marco",
+// 	"lastName": "Polo",
+// 	"email": "marco@polo.com",
+// 	"gpa": 1.0
+// }

@@ -12,9 +12,20 @@ module.exports = db.define('student', {
     },
     email: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+            isEmail: true
+        }
     },
     gpa: {
-        type: Sequelize.FLOAT
+        type: Sequelize.FLOAT,
+        validate: {
+            max: 4.0,
+            min: 0.0
+        }
+    }
+}, {
+    getterMethods: {
+        name() { return this.firstName + ' ' + this.lastName }
     }
 })
