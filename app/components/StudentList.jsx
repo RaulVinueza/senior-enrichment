@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
-export default class StudentList extends Component {
+class StudentList extends Component {
     constructor(){
         super()
         this.renderStudentAddForm = this.renderStudentAddForm.bind(this)
@@ -11,6 +12,7 @@ export default class StudentList extends Component {
     }
 
     render(){
+        const students = this.props.students
         return (
             <div>
                 <h1>Students</h1>
@@ -21,12 +23,31 @@ export default class StudentList extends Component {
                             <th>#</th>
                             <th>Name</th>
                             <th>Campus</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
+                        {students.length && students.map(student => {
+                            return (
+                                <tr key={student.id}>
+                                    <td>{student.id}</td>
+                                    <td>{student.name}</td>
+                                    <td>campus</td>
+                                    <td>delete</td>
+                                    <td>edit</td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>
         )
     }
 }
+
+const mapState = state => ({
+    students: state.students
+})
+
+export default connect(mapState)(StudentList)

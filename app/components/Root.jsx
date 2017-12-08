@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import {NavLink, Route} from 'react-router-dom'
 import StudentList from './StudentList'
+import Student from './Student'
 import CampusList from './CampusList'
 import AddStudentForm from './AddStudentForm'
 import AddCampusForm from './AddCampusform'
-import {fetchAllCampuses} from '../reducers'
+import {fetchAllCampuses, fetchAllStudents} from '../reducers'
 import store from '../store'
 
 export default class Root extends Component {
@@ -14,6 +15,7 @@ export default class Root extends Component {
 
   componentDidMount(){ 
     store.dispatch(fetchAllCampuses())
+    store.dispatch(fetchAllStudents())
   }
 
   render(){
@@ -26,7 +28,8 @@ export default class Root extends Component {
           <Route path="/home" component={CampusList} />
           <Route path ="/add/campus" component={AddCampusForm} />
           
-          <Route path="/students" component={StudentList} />
+          <Route exact path="/students" component={StudentList} />
+          <Route path="/students/:id" render={props => <Student studentId={props.match.params.id} />} />
           <Route path="/add/students" component={AddStudentForm} />
 
       </div>
