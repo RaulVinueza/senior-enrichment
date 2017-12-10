@@ -4,11 +4,13 @@ import axios from 'axios'
 const ADD_STUDENT = 'ADD_STUDENT'
 const EDIT_STUDENT = 'EDIT_STUDENT'
 const GET_STUDENTS = 'GET_STUDENTS'
+const DELETE_STUDENT = 'DELETE_STUDENT'
 
 //ACTION CREATORS
 const createAddStudentAction = student => ({type: ADD_STUDENT, student})
 const createGetStudentsAction = students => ({type: GET_STUDENTS, students})
 const createEditStudentAction = (id, student) => ({type: EDIT_STUDENT, id, student})
+const createDeleteStudentAction = studentId => ({type: DELETE_STUDENT, studentId})
 
 //THUNK CREATORS
 export const postNewStudent = newStudent => dispatch => {
@@ -21,6 +23,12 @@ export const putStudentEdits = (id, editedStudent) => dispatch => {
     axios.put(`/api/students/${id}`, editedStudent)
     .then(res => res.status)
     .then(status => status === 202 && dispatch((createEditStudentAction(id, editedStudent))))
+}
+
+export const deleteStudentById = id => dispatch => {
+    axios.delete(`/api/students/${id}`)
+    .then(res => res.status)
+    .then(status => status === 202 && dispatch(createDeleteStudentAction(id)))
 }
 
 export const fetchAllStudents = () => dispatch => {
@@ -37,6 +45,8 @@ export default function(prevState = [], action){
         case EDIT_STUDENT:
             action.student.id = action.id
             return prevState.map(student => student.id === action.id ? action.student : student)
+        case DELETE_STUDENT:
+            return prevState.filter(student => student.id !== action.studentId)
         case GET_STUDENTS:
             return action.students
         default:
