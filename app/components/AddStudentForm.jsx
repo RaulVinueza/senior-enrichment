@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import {postNewStudent}  from '../reducers/studentReducer'
 import store from '../store'
 import StudentForm from './StudentForm'
+import {connect} from 'react-redux'
 
-export default class AddStudentform extends Component {
+class AddStudentform extends Component {
     constructor(){
         super()
         this.cancel = this.cancel.bind(this)
@@ -19,12 +20,20 @@ export default class AddStudentform extends Component {
             firstName: evt.target.firstName.value,
             lastName: evt.target.lastName.value,
             email: evt.target.email.value,
-            gpa: evt.target.gpa.value
+            gpa: evt.target.gpa.value,
+            campusId: evt.target.campus.value
         }
         store.dispatch(postNewStudent(newStudent))
     }
 
     render(){
-        return <StudentForm handleSubmit={this.handleSubmit} cancel={this.cancel}/>
+        const campuses = this.props.campuses
+        return <StudentForm handleSubmit={this.handleSubmit} cancel={this.cancel} campuses={campuses} />
     }
 }
+
+const mapState = state => ({
+    campuses: state.campuses
+})
+
+export default connect(mapState)(AddStudentform)

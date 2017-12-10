@@ -39,7 +39,8 @@ class StudentList extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {students.length && students.map(student => {
+                        {students.length && students.sort((s1, s2) => s1.id > s2.id )
+                        .map(student => {
                             return (
                                 <tr key={student.id} onClick={() => this.renderStudent(student.id)}>
                                     <td>{student.id}</td>

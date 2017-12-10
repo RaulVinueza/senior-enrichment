@@ -18,20 +18,27 @@ class Campus extends Component {
 
     render(){
         const campus = this.props.campus || {}
+        const students = this.props.students || []
         return (
             <div>
-            <p>name: {campus.name}</p>
-            <p>email: {campus.imgUrl}</p>
-            <p>gpa: {campus.description}</p>
-            <button onClick={this.returnHome}>BACK</button>
-            <button onClick={this.renderEditForm}>EDIT</button>
+                <p>Name: {campus.name}</p>
+                <p>imgUrl: {campus.imgUrl}</p>
+                <p>Description: {campus.description}</p>
+                <button onClick={this.returnHome}>BACK</button>
+                <button onClick={this.renderEditForm}>EDIT</button>
+                <h3>Students</h3>
+                <ul>
+                    {students.sort((s1, s2) => s1 > s2)
+                        .map(student => <li key={student.id}>{student.id} - {student.name}</li>)}
+                </ul>
             </div>
         )
     }
 }
 
 const mapState = (state, ownProps) => ({
-    campus: state.campuses.find(campus => campus.id === ownProps.campusId)
+    campus: state.campuses.find(campus => campus.id === ownProps.campusId),
+    students: state.students.filter(student => student.campusId === ownProps.campusId)
 })
 
 export default connect(mapState)(Campus)

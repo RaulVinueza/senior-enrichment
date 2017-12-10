@@ -11,6 +11,12 @@ export default function StudentForm(props){
             <input name="email" />
             <label>GPA: </label>
             <input name="gpa" type="number" />
+            <label>Campus:</label>
+            <select name="campus">
+                {props.campuses.map(campus => {
+                    return <option key={campus.id} value={campus.id}>{campus.name}</option>
+                })}
+            </select>
             <button type="submit">SUBMIT</button>
             <button onClick={props.cancel}>CANCEL</button>
         </form>
