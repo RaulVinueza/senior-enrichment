@@ -5,10 +5,15 @@ class CampusList extends Component {
     constructor(){
         super()
         this.renderCampusAddForm = this.renderCampusAddForm.bind(this)
+        this.renderCampus = this.renderCampus.bind(this)
     }
 
     renderCampusAddForm(){
         this.props.history.push('add/campus')
+    }
+
+    renderCampus(id){
+        this.props.history.push(`campus/${id}`)
     }
 
     render(){
@@ -18,7 +23,7 @@ class CampusList extends Component {
                 <h1>CampusList</h1>
                 {campuses.length && campuses.map(campus => {
                     return (
-                        <div key={campus.id}>
+                        <div key={campus.id} onClick={() => this.renderCampus(campus.id)}>
                             <h2 > {campus.name} </h2>
                         </div>
                     )

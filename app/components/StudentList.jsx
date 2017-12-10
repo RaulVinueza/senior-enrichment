@@ -5,10 +5,16 @@ class StudentList extends Component {
     constructor(){
         super()
         this.renderStudentAddForm = this.renderStudentAddForm.bind(this)
+        this.renderStudent = this.renderStudent.bind(this)
     }
 
     renderStudentAddForm(){
         this.props.history.push('add/students')
+    }
+
+    renderStudent(studentId){
+       
+        this.props.history.push(`students/${studentId}`)
     }
 
     render(){
@@ -30,7 +36,7 @@ class StudentList extends Component {
                     <tbody>
                         {students.length && students.map(student => {
                             return (
-                                <tr key={student.id}>
+                                <tr key={student.id} onClick={() => this.renderStudent(student.id)}>
                                     <td>{student.id}</td>
                                     <td>{student.name}</td>
                                     <td>campus</td>
