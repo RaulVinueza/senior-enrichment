@@ -5,10 +5,15 @@ class Student extends Component {
     constructor(){
         super()
         this.returnToStudentList = this.returnToStudentList.bind(this)
+        this.renderEditForm = this.renderEditForm.bind(this)
     }
 
     returnToStudentList(){
         this.props.history.push('/students')
+    }
+
+    renderEditForm(){
+        this.props.history.push(`/edit/student/${this.props.student.id}`)
     }
 
     render(){
@@ -19,6 +24,7 @@ class Student extends Component {
             <p>email: {student.email}</p>
             <p>gpa: {student.gpa}</p>
             <button onClick={this.returnToStudentList}>BACK</button>
+            <button onClick={this.renderEditForm}>EDIT</button>
             </div>
         )
     }

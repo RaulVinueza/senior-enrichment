@@ -7,6 +7,7 @@ import Campus from './Campus'
 import AddCampusForm from './AddCampusForm'
 import EditCampusForm from './EditCampusForm'
 import AddStudentForm from './AddStudentForm'
+import EditStudentForm from './EditStudentForm'
 import {fetchAllCampuses, fetchAllStudents} from '../reducers'
 import store from '../store'
 
@@ -40,6 +41,9 @@ export default class Root extends Component {
             return <Student studentId={+props.match.params.id} history={props.history} />
           }} />
           <Route path="/add/students" component={AddStudentForm} />
+          <Route path="/edit/student/:id" render={props => {
+            return <EditStudentForm studentId={+props.match.params.id} />
+          }}/>
 
       </div>
     )
