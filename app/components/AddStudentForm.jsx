@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {postNewStudent}  from '../reducers/studentReducer'
 import store from '../store'
+import StudentForm from './StudentForm'
 
 export default class AddStudentform extends Component {
     constructor(){
@@ -14,7 +15,6 @@ export default class AddStudentform extends Component {
     }
 
     handleSubmit(evt){
-        evt.preventDefault()
         const newStudent = {
             firstName: evt.target.firstName.value,
             lastName: evt.target.lastName.value,
@@ -25,22 +25,6 @@ export default class AddStudentform extends Component {
     }
 
     render(){
-        return (
-            
-                <form onSubmit={this.handleSubmit}>
-                    <label>First Name:</label>
-                    <input name="firstName" />
-                    <label>Last Name:</label>
-                    <input name="lastName" />
-                    <label>Email: </label>
-                    <input name="email" />
-                    <label>GPA: </label>
-                    <input name="gpa" type="number" />
-                    <button type="submit">SUBMIT</button>
-                    <button onClick={this.cancel}>CANCEL</button>
-                </form>
-                
-            
-        )
+        return <StudentForm handleSubmit={this.handleSubmit} cancel={this.cancel}/>
     }
 }

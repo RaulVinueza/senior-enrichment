@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {postNewCampus} from '../reducers/campusReducer'
 import store from '../store'
+import CampusForm from './CampusForm'
 
 export default class AddCampusForm extends Component {
     constructor(){
@@ -14,7 +15,6 @@ export default class AddCampusForm extends Component {
     }
 
     handleSubmit(evt){
-        evt.preventDefault()
         const newCampus = {
             name: evt.target.name.value,
             imgUrl: evt.target.imgUrl.value,
@@ -24,20 +24,6 @@ export default class AddCampusForm extends Component {
     }
 
     render(){
-        return (
-            
-                <form onSubmit={this.handleSubmit}>
-                    <label>Name:</label>
-                    <input name="name" />
-                    <label>Image URL:</label>
-                    <input name="imgUrl" />
-                    <label>Description:</label>
-                    <textarea name="description" />
-                    <button type="submit" >SUBMIT</button>
-                    <button onClick={this.cancel}>CANCEL</button>
-                </form>
-                
-           
-        )
+        return <CampusForm handleSubmit={this.handleSubmit} cancel={this.cancel} />
     }
 }

@@ -21,8 +21,6 @@ export const fetchAllStudents = () => dispatch => {
     .then(students => dispatch(createGetStudentsAction(students)))
 }
 
-
-
 //REDUCER
 export default function(prevState = [], action){
     switch (action.type){
