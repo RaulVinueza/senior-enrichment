@@ -4,8 +4,9 @@ import StudentList from './StudentList'
 import Student from './Student'
 import CampusList from './CampusList'
 import Campus from './Campus'
+import AddCampusForm from './AddCampusForm'
+import EditCampusForm from './EditCampusForm'
 import AddStudentForm from './AddStudentForm'
-import AddCampusForm from './AddCampusform'
 import {fetchAllCampuses, fetchAllStudents} from '../reducers'
 import store from '../store'
 
@@ -28,6 +29,9 @@ export default class Root extends Component {
         </nav>
           <Route path="/home" component={CampusList} />
           <Route path="/add/campus" component={AddCampusForm} />
+          <Route path="/edit/campus/:id" render={props => {
+            return <EditCampusForm campusId={+props.match.params.id} />
+            }}/>
           <Route path="/campus/:id" render={props => {
             return <Campus campusId={+props.match.params.id} history={props.history} />
           }} />
