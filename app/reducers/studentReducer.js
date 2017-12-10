@@ -9,11 +9,19 @@ const createAddStudentAction = student => ({type: ADD_STUDENT, student})
 const createGetStudentsAction = students => ({type: GET_STUDENTS, students})
 
 //THUNK CREATORS
+export const postNewStudent = newStudent => dispatch => {
+    axios.post('/api/students/', newStudent)
+    .then(res => res.data)
+    .then( postedStudent => dispatch(createAddStudentAction(postedStudent)))
+}
+
 export const fetchAllStudents = () => dispatch => {
     axios.get('/api/students')
     .then(res => res.data)
     .then(students => dispatch(createGetStudentsAction(students)))
 }
+
+
 
 //REDUCER
 export default function(prevState = [], action){
