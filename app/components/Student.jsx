@@ -4,12 +4,12 @@ import {connect} from 'react-redux'
 class Student extends Component {
     constructor(){
         super()
-        this.returnToStudentList = this.returnToStudentList.bind(this)
+        this.returnToPrevious = this.returnToPrevious.bind(this)
         this.renderEditForm = this.renderEditForm.bind(this)
     }
 
-    returnToStudentList(){
-        this.props.history.push('/students')
+    returnToPrevious(){
+        this.props.history.goBack()
     }
 
     renderEditForm(){
@@ -23,7 +23,7 @@ class Student extends Component {
             <p>name: {student.name}</p>
             <p>email: {student.email}</p>
             <p>gpa: {student.gpa}</p>
-            <button onClick={this.returnToStudentList}>BACK</button>
+            <button onClick={this.returnToPrevious}>BACK</button>
             <button onClick={this.renderEditForm}>EDIT</button>
             </div>
         )

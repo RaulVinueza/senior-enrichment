@@ -6,6 +6,7 @@ class Campus extends Component {
         super()
         this.returnHome = this.returnHome.bind(this)
         this.renderEditForm = this.renderEditForm.bind(this)
+        this.renderStudent = this.renderStudent.bind(this)
     }
 
     returnHome(){
@@ -14,6 +15,10 @@ class Campus extends Component {
 
     renderEditForm(){
         this.props.history.push(`/edit/campus/${this.props.campus.id}`)
+    }
+
+    renderStudent(id){
+        this.props.history.push(`/students/${id}`)
     }
 
     render(){
@@ -29,7 +34,7 @@ class Campus extends Component {
                 <h3>Students</h3>
                 <ul>
                     {students.sort((s1, s2) => s1 > s2)
-                        .map(student => <li key={student.id}>{student.id} - {student.name}</li>)}
+                        .map(student => <li onClick={() => this.renderStudent(student.id)} key={student.id}>{student.id} - {student.name}</li>)}
                 </ul>
             </div>
         )

@@ -21,7 +21,7 @@ class AddStudentform extends Component {
             lastName: evt.target.lastName.value,
             email: evt.target.email.value,
             gpa: evt.target.gpa.value,
-            campusId: evt.target.campus.value
+            campusId: +evt.target.campus.value
         }
         store.dispatch(postNewStudent(newStudent))
     }
