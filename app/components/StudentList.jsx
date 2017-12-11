@@ -27,9 +27,9 @@ class StudentList extends Component {
         const students = this.props.students
         const campuses = this.props.campuses
         return (
-            <div>
-                <button onClick={this.renderStudentAddForm}>ADD +</button>
-                <table>
+            <div className="container">
+                <button className="btn btn-secondary my-3" onClick={this.renderStudentAddForm}>ADD +</button>
+                <table style={{cursor: 'pointer'}} className="table">
                     <thead>
                         <tr>
                             <th>#</th>

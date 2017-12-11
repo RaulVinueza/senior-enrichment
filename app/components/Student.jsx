@@ -20,13 +20,13 @@ class Student extends Component {
         const student = this.props.student || {}
         const studentCampus = this.props.campuses.find(campus => campus.id === student.campusId) || {}
         return (
-            <div>
-            <p>name: {student.name}</p>
+            <div className="container">
+            <h4>{student.name}</h4>
             <p>email: {student.email}</p>
             <p>gpa: {student.gpa}</p>
             <p>campus: {studentCampus.name}</p>
-            <button onClick={this.returnToPrevious}>BACK</button>
-            <button onClick={this.renderEditForm}>EDIT</button>
+            <button className="btn btn-secondary mr-3" onClick={this.returnToPrevious}>BACK</button>
+            <button className="btn btn-light" onClick={this.renderEditForm}>EDIT</button>
             </div>
         )
     }

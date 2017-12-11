@@ -23,8 +23,8 @@ export default class Root extends Component {
 
   render(){
     return (
-      <div>
-        <nav className="nav nav-pills justify-content-end">
+      <div className="p-3">
+        <nav className="container nav nav-pills justify-content-end">
           <NavLink className="nav-link" to="/home"> Home</NavLink>
           <NavLink className="nav-link" to="/students"> Students</NavLink>
         </nav>
@@ -44,7 +44,6 @@ export default class Root extends Component {
           <Route path="/students/edit/:id" render={props => {
             return <EditStudentForm studentId={+props.match.params.id} history={props.history}/>
           }}/>
-
       </div>
     )
   }

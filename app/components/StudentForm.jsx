@@ -7,6 +7,7 @@ export default function StudentForm(props){
     const gpa = props.student && props.student.gpa || ''
     const campusId = props.student && props.student.campusId || 1
     return (
+        <div className="container">
         <form onSubmit={ evt => {evt.preventDefault(); props.handleSubmit(evt)}}>
             <label>First Name:</label>
             <input className="form-control" name="firstName" defaultValue={firstName} />
@@ -17,14 +18,15 @@ export default function StudentForm(props){
             <label>GPA: </label>
             <input className="form-control" name="gpa" type="number" defaultValue={gpa} />
             <label>Campus:</label>
-            <select name="campus" defaultValue={campusId}>
+            <select className="form-control" name="campus" defaultValue={campusId}>
                 {props.campuses.map(campus => {
                     return <option key={campus.id} value={campus.id}>{campus.name}</option>
                 })}
             </select>
-            <button type="submit">SUBMIT</button>
-            <button type="button" onClick={props.cancel}>CANCEL</button>
+            <button className="btn btn-primary btn-lg btn-block my-3" type="submit">SUBMIT</button>
+            <button className="btn btn-default btn-lg btn-block my-3" type="button" onClick={props.cancel}>CANCEL</button>
         </form>
+        </div>
     )
 }
 

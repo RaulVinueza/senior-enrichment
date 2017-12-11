@@ -26,15 +26,15 @@ class Campus extends Component {
         const students = this.props.students || []
         return (
             <div>
-                <p>Name: {campus.name}</p>
+                <h4>{campus.name}</h4>
                 <p>imgUrl: {campus.imgUrl}</p>
                 <p>Description: {campus.description}</p>
-                <button onClick={this.returnHome}>BACK TO CAMPUS LIST</button>
-                <button onClick={this.renderEditForm}>EDIT</button>
-                <h3>Students</h3>
-                <ul>
+                <button className="btn btn-secondary" onClick={this.returnHome}>BACK TO CAMPUS LIST</button>
+                <button className="btn btn-light" onClick={this.renderEditForm}>EDIT</button>
+                <h5 className="my-3">Students enrolled here: </h5>
+                <ul className="list-group pt-3">
                     {students.sort((s1, s2) => s1 > s2)
-                        .map(student => <li onClick={() => this.renderStudent(student.id)} key={student.id}>{student.id} - {student.name}</li>)}
+                        .map(student => <li className="list-group-item" onClick={() => this.renderStudent(student.id)} key={student.id}>{student.id} - {student.name}</li>)}
                 </ul>
             </div>
         )
