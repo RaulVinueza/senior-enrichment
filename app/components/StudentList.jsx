@@ -47,7 +47,7 @@ class StudentList extends Component {
                                     <td>{student.id}</td>
                                     <td>{student.name}</td>
                                     <td>{studentCampus.name}</td>
-                                    <td onClick={evt => {evt.stopPropagation(); this.handleDelete(student.id)}}>delete</td>
+                                    <td onClick={evt => {evt.stopPropagation(); this.handleDelete(student.id)}}><i className="fa fa-trash-o" aria-hidden="true" /></td>
                                 </tr>
                             )
                         })}
