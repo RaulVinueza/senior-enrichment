@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import CampusForm from './CampusForm'
 import store from '../store'
 import { putCampusEdits } from '../reducers/index';
+import {connect} from 'react-redux'
 
-export default class EditCampusForm extends Component{
+class EditCampusForm extends Component{
     constructor(){
         super()
         this.cancel = this.cancel.bind(this)
@@ -24,6 +25,11 @@ export default class EditCampusForm extends Component{
     }
 
     render(){
-        return <CampusForm cancel={this.cancel} handleSubmit={this.handleSubmit} />
+        
+        return <CampusForm cancel={this.cancel} handleSubmit={this.handleSubmit} campus={this.props.campus} />
     }
 }
+const mapState = (state, ownProps) => ({
+    campus: state.campuses.find(campus => campus.id === ownProps.campusId)
+})
+export default connect(mapState)(EditCampusForm)
