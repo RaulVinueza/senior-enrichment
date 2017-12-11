@@ -1,6 +1,6 @@
 const Campus = require('./db/models/Campus')
 const Student = require('./db/models/Student')
-const db = require('./db')
+const db = require('./db/models')
 
 const campuses = [
     {
