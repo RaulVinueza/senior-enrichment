@@ -18,7 +18,7 @@ export default function StudentForm(props){
                 })}
             </select>
             <button type="submit">SUBMIT</button>
-            <button onClick={props.cancel}>CANCEL</button>
+            <button type="button" onClick={props.cancel}>CANCEL</button>
         </form>
     )
 }

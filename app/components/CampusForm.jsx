@@ -10,7 +10,7 @@ export default function CampusForm(props) {
         <label>Description:</label>
         <textarea name="description" />
         <button type="submit" >SUBMIT</button>
-        <button onClick={props.cancel}>CANCEL</button>
+        <button type="button" onClick={props.cancel}>CANCEL</button>
     </form>
     )
 }

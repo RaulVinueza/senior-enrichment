@@ -18,11 +18,13 @@ class Student extends Component {
 
     render(){
         const student = this.props.student || {}
+        const studentCampus = this.props.campuses.find(campus => campus.id === student.campusId) || {}
         return (
             <div>
             <p>name: {student.name}</p>
             <p>email: {student.email}</p>
             <p>gpa: {student.gpa}</p>
+            <p>campus: {studentCampus.name}</p>
             <button onClick={this.returnToPrevious}>BACK</button>
             <button onClick={this.renderEditForm}>EDIT</button>
             </div>
@@ -32,6 +34,7 @@ class Student extends Component {
 
 const mapState = (state, ownProps) => ({
     student: state.students.find(student => student.id === ownProps.studentId),
+    campuses: state.campuses
 })
 
 export default connect(mapState)(Student)

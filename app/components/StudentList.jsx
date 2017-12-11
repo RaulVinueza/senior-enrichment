@@ -25,6 +25,7 @@ class StudentList extends Component {
 
     render(){
         const students = this.props.students
+        const campuses = this.props.campuses
         return (
             <div>
                 <h1>Students</h1>
@@ -41,11 +42,12 @@ class StudentList extends Component {
                     <tbody>
                         {students.length && students.sort((s1, s2) => s1.id > s2.id )
                         .map(student => {
+                            const studentCampus = campuses.find(campus => campus.id === student.campusId) || {}
                             return (
                                 <tr key={student.id} onClick={() => this.renderStudent(student.id)}>
                                     <td>{student.id}</td>
                                     <td>{student.name}</td>
-                                    <td>campus</td>
+                                    <td>{studentCampus.name}</td>
                                     <td onClick={evt => {evt.stopPropagation(); this.handleDelete(student.id)}}>delete</td>
                                 </tr>
                             )
@@ -58,7 +60,8 @@ class StudentList extends Component {
 }
 
 const mapState = state => ({
-    students: state.students
+    students: state.students,
+    campuses: state.campuses
 })
 
 export default connect(mapState)(StudentList)

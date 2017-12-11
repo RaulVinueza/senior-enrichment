@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import StudentForm from './StudentForm'
 import {putStudentEdits} from '../reducers/studentReducer'
 import store from '../store'
+import {connect} from 'react-redux'
 
-export default class EditStudentForm extends Component {
+class EditStudentForm extends Component {
     constructor(){
         super()
         this.cancel = this.cancel.bind(this)
@@ -11,7 +12,7 @@ export default class EditStudentForm extends Component {
     }
 
     cancel(){
-        this.props.history.push('/students')
+        this.props.history.goBack()
     }
 
     handleSubmit(evt){
@@ -19,12 +20,17 @@ export default class EditStudentForm extends Component {
             firstName: evt.target.firstName.value,
             lastName: evt.target.lastName.value,
             email: evt.target.email.value,
-            gpa: evt.target.gpa.value
+            gpa: evt.target.gpa.value,
+            campusId: +evt.target.campus.value
         }
         store.dispatch(putStudentEdits(this.props.studentId, editedStudent))
     }
 
     render(){
-        return <StudentForm handleSubmit={this.handleSubmit} cancel={this.cancel}/>
+        return <StudentForm handleSubmit={this.handleSubmit} cancel={this.cancel} campuses={this.props.campuses} />
     }
 }
+const mapState = state => ({
+    campuses: state.campuses
+})
+export default connect(mapState)(EditStudentForm)

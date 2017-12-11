@@ -27,7 +27,7 @@ class CampusList extends Component {
         const campuses = this.props.campuses
         return (
             <div>
-                <h1>CampusList</h1>
+                <button onClick={this.renderCampusAddForm}>ADD CAMPUS +</button>
                 {campuses.length && campuses.map(campus => {
                     return (
                         <div key={campus.id} onClick={() => this.renderCampus(campus.id)}>
@@ -36,7 +36,7 @@ class CampusList extends Component {
                         </div>
                     )
                 })}
-                <button onClick={this.renderCampusAddForm}>ADD +</button>
+                
             </div>
         )
     }

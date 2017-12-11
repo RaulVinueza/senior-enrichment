@@ -11,7 +11,7 @@ export default class EditCampusForm extends Component{
     }
 
     cancel(){
-        this.props.history.push('/home')
+        this.props.history.goBack()
     }
 
     handleSubmit(evt){

@@ -31,7 +31,7 @@ export default class Root extends Component {
           <Route path="/home" component={CampusList} />
           <Route path="/add/campus" component={AddCampusForm} />
           <Route path="/edit/campus/:id" render={props => {
-            return <EditCampusForm campusId={+props.match.params.id} />
+            return <EditCampusForm campusId={+props.match.params.id} history={props.history}/>
             }}/>
           <Route path="/campus/:id" render={props => {
             return <Campus campusId={+props.match.params.id} history={props.history} />
@@ -42,7 +42,7 @@ export default class Root extends Component {
           }} />
           <Route path="/add/students" component={AddStudentForm} />
           <Route path="/edit/student/:id" render={props => {
-            return <EditStudentForm studentId={+props.match.params.id} />
+            return <EditStudentForm studentId={+props.match.params.id} history={props.history}/>
           }}/>
 
       </div>
