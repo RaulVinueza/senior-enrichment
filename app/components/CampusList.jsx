@@ -12,11 +12,11 @@ class CampusList extends Component {
     }
 
     renderCampusAddForm(){
-        this.props.history.push('add/campus')
+        this.props.history.push('/home/add/campus')
     }
 
     renderCampus(id){
-        this.props.history.push(`campus/${id}`)
+        this.props.history.push(`/home/campus/${id}`)
     }
 
     handleDelete(id){

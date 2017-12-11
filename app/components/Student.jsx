@@ -13,7 +13,7 @@ class Student extends Component {
     }
 
     renderEditForm(){
-        this.props.history.push(`/edit/student/${this.props.student.id}`)
+        this.props.history.push(`/students/edit/${this.props.student.id}`)
     }
 
     render(){

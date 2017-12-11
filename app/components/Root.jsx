@@ -28,20 +28,20 @@ export default class Root extends Component {
           <NavLink className="nav-link" to="/home"> Home</NavLink>
           <NavLink className="nav-link" to="/students"> Students</NavLink>
         </nav>
-          <Route path="/home" component={CampusList} />
-          <Route path="/add/campus" component={AddCampusForm} />
-          <Route path="/edit/campus/:id" render={props => {
+          <Route exact path="/home" component={CampusList} />
+          <Route path="/home/add/campus" component={AddCampusForm} />
+          <Route path="/home/edit/campus/:id" render={props => {
             return <EditCampusForm campusId={+props.match.params.id} history={props.history}/>
             }}/>
-          <Route path="/campus/:id" render={props => {
+          <Route path="/home/campus/:id" render={props => {
             return <Campus campusId={+props.match.params.id} history={props.history} />
           }} />
           <Route exact path="/students" component={StudentList} />
-          <Route path="/students/:id" render={props => {
+          <Route path="/students/view/:id" render={props => {
             return <Student studentId={+props.match.params.id} history={props.history} />
           }} />
-          <Route path="/add/students" component={AddStudentForm} />
-          <Route path="/edit/student/:id" render={props => {
+          <Route path="/students/add" component={AddStudentForm} />
+          <Route path="/students/edit/:id" render={props => {
             return <EditStudentForm studentId={+props.match.params.id} history={props.history}/>
           }}/>
 

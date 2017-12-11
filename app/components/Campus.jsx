@@ -14,11 +14,11 @@ class Campus extends Component {
     }
 
     renderEditForm(){
-        this.props.history.push(`/edit/campus/${this.props.campus.id}`)
+        this.props.history.push(`/home/edit/campus/${this.props.campus.id}`)
     }
 
     renderStudent(id){
-        this.props.history.push(`/students/${id}`)
+        this.props.history.push(`/students/view/${id}`)
     }
 
     render(){
@@ -29,7 +29,7 @@ class Campus extends Component {
                 <p>Name: {campus.name}</p>
                 <p>imgUrl: {campus.imgUrl}</p>
                 <p>Description: {campus.description}</p>
-                <button onClick={this.returnHome}>BACK</button>
+                <button onClick={this.returnHome}>BACK TO CAMPUS LIST</button>
                 <button onClick={this.renderEditForm}>EDIT</button>
                 <h3>Students</h3>
                 <ul>

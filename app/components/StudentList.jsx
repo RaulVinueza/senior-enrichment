@@ -12,11 +12,11 @@ class StudentList extends Component {
     }
 
     renderStudentAddForm(){
-        this.props.history.push('add/students')
+        this.props.history.push('/students/add')
     }
 
     renderStudent(studentId){  
-        this.props.history.push(`students/${studentId}`)
+        this.props.history.push(`students/view/${studentId}`)
     }
 
     handleDelete(id){
