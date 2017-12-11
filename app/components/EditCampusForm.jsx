@@ -21,7 +21,7 @@ class EditCampusForm extends Component{
             imgUrl: evt.target.imgUrl.value,
             description: evt.target.description.value
         }
-        store.dispatch(putCampusEdits(this.props.campusId, editedCampus))
+        store.dispatch(putCampusEdits(this.props.campusId, editedCampus, this.cancel))
     }
 
     render(){

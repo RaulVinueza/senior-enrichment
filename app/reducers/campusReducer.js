@@ -13,13 +13,15 @@ const DELETE_CAMPUS = 'DELETE_CAMPUS'
  const createDeleteCampusAction = campusId =>  ({type: DELETE_CAMPUS, campusId})
 
 //THUNK CREATORS
-export const postNewCampus = newCampus => dispatch => {
+export const postNewCampus = (newCampus, back) => dispatch => {
+    back()
     axios.post('/api/campuses/', newCampus)
     .then( res => res.data)
     .then( postedCampus => dispatch(createAddCampusAction(postedCampus)))
 }
 
-export const putCampusEdits = (id, editedCampus) => dispatch => {
+export const putCampusEdits = (id, editedCampus, back) => dispatch => {
+    back()
     axios.put(`/api/campuses/${id}`, editedCampus)
     .then((res) => res.status)
     .then(status => status === 202 && dispatch(createEditCampusAction(id, editedCampus)))

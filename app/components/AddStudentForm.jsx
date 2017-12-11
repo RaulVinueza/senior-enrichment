@@ -23,7 +23,7 @@ class AddStudentform extends Component {
             gpa: evt.target.gpa.value,
             campusId: +evt.target.campus.value
         }
-        store.dispatch(postNewStudent(newStudent))
+        store.dispatch(postNewStudent(newStudent, this.cancel))
     }
 
     render(){

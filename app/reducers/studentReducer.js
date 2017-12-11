@@ -13,16 +13,18 @@ const createEditStudentAction = (id, student) => ({type: EDIT_STUDENT, id, stude
 const createDeleteStudentAction = studentId => ({type: DELETE_STUDENT, studentId})
 
 //THUNK CREATORS
-export const postNewStudent = newStudent => dispatch => {
+export const postNewStudent = (newStudent, back) => dispatch => {
+    back()
     axios.post('/api/students/', newStudent)
     .then(res => res.data)
     .then( postedStudent => dispatch(createAddStudentAction(postedStudent)))
 }
 
-export const putStudentEdits = (id, editedStudent) => dispatch => {
+export const putStudentEdits = (id, editedStudent, back) => dispatch => {
+    back()
     axios.put(`/api/students/${id}`, editedStudent)
     .then(res => res.status)
-    .then(status => status === 202 && dispatch((createEditStudentAction(id, editedStudent))))
+    .then(status => status === 202 && dispatch(createEditStudentAction(id, editedStudent)))
 }
 
 export const deleteStudentById = id => dispatch => {

@@ -1,18 +1,23 @@
 import React from 'react'
 
 export default function StudentForm(props){
+    const firstName = props.student && props.student.firstName || ''
+    const lastName = props.student && props.student.lastName || ''
+    const email = props.student && props.student.email || 'email@test.com'
+    const gpa = props.student && props.student.gpa || ''
+    const campusId = props.student && props.student.campusId || 1
     return (
         <form onSubmit={ evt => {evt.preventDefault(); props.handleSubmit(evt)}}>
             <label>First Name:</label>
-            <input name="firstName" />
+            <input name="firstName" defaultValue={firstName} />
             <label>Last Name:</label>
-            <input name="lastName" />
+            <input name="lastName" defaultValue={lastName} />
             <label>Email: </label>
-            <input name="email" />
+            <input name="email" defaultValue={email} />
             <label>GPA: </label>
-            <input name="gpa" type="number" />
+            <input name="gpa" type="number" defaultValue={gpa} />
             <label>Campus:</label>
-            <select name="campus">
+            <select name="campus" defaultValue={campusId}>
                 {props.campuses.map(campus => {
                     return <option key={campus.id} value={campus.id}>{campus.name}</option>
                 })}

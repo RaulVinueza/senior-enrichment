@@ -20,7 +20,7 @@ export default class AddCampusForm extends Component {
             imgUrl: evt.target.imgUrl.value,
             description: evt.target.description.value
         }
-        store.dispatch(postNewCampus(newCampus))
+        store.dispatch(postNewCampus(newCampus, this.cancel))
     }
 
     render(){

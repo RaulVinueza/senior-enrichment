@@ -23,14 +23,15 @@ class EditStudentForm extends Component {
             gpa: evt.target.gpa.value,
             campusId: +evt.target.campus.value
         }
-        store.dispatch(putStudentEdits(this.props.studentId, editedStudent))
+        store.dispatch(putStudentEdits(this.props.studentId, editedStudent, this.cancel))
     }
 
     render(){
-        return <StudentForm handleSubmit={this.handleSubmit} cancel={this.cancel} campuses={this.props.campuses} />
+        return <StudentForm handleSubmit={this.handleSubmit} cancel={this.cancel} campuses={this.props.campuses} student={this.props.student} />
     }
 }
-const mapState = state => ({
-    campuses: state.campuses
+const mapState = (state, ownProps) => ({
+    campuses: state.campuses,
+    student: state.students.find(student => student.id === ownProps.studentId)
 })
 export default connect(mapState)(EditStudentForm)
