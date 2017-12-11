@@ -33,10 +33,9 @@ router.put('/:id', (req, res, next) => {
         gpa: req.body.gpa,
         campusId: req.body.campusId
     }, {
-        where: {
-            id: req.params.id
-        }
-    }).then(() => res.sendStatus(202))
+        where: {id: req.params.id},
+        returning: true
+    }).then(([affected, students]) => res.send(students[0]))
     .catch(next)
 })
 

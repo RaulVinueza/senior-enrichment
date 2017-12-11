@@ -23,8 +23,8 @@ export const postNewStudent = (newStudent, back) => dispatch => {
 export const putStudentEdits = (id, editedStudent, back) => dispatch => {
     back()
     axios.put(`/api/students/${id}`, editedStudent)
-    .then(res => res.status)
-    .then(status => status === 202 && dispatch(createEditStudentAction(id, editedStudent)))
+    .then(res => res.data)
+    .then(student =>  dispatch(createEditStudentAction(id, student)))
 }
 
 export const deleteStudentById = id => dispatch => {

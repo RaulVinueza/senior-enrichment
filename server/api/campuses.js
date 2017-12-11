@@ -29,9 +29,10 @@ router.put('/:id', (req, res, next) => {
         imageURL: req.body.imageURL,
         description: req.body.description
     }, {
-        where: {id: req.params.id}
+        where: {id: req.params.id},
+        returning: true,
     })
-    .then(() => res.sendStatus(202))
+    .then(([affected, campuses]) => res.send(campuses[0]))
     .catch(next)
 })
 

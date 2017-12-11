@@ -23,8 +23,8 @@ export const postNewCampus = (newCampus, back) => dispatch => {
 export const putCampusEdits = (id, editedCampus, back) => dispatch => {
     back()
     axios.put(`/api/campuses/${id}`, editedCampus)
-    .then((res) => res.status)
-    .then(status => status === 202 && dispatch(createEditCampusAction(id, editedCampus)))
+    .then((res) => res.data)
+    .then(campus => dispatch(createEditCampusAction(id, campus)))
 }
 
 export const deleteCampusById = id => dispatch => {

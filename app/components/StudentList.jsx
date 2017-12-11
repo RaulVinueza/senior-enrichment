@@ -28,7 +28,6 @@ class StudentList extends Component {
         const campuses = this.props.campuses
         return (
             <div>
-                <h1>Students</h1>
                 <button onClick={this.renderStudentAddForm}>ADD +</button>
                 <table>
                     <thead>
