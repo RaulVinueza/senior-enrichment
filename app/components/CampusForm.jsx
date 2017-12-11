@@ -7,11 +7,11 @@ export default function CampusForm(props) {
     return (
     <form onSubmit={ evt => {evt.preventDefault(); props.handleSubmit(evt)}}>
         <label>Name:</label>
-        <input name="name" defaultValue={name} />
+        <input className="form-control" name="name" defaultValue={name} />
         <label>Image URL:</label>
-        <input name="imgUrl" defaultValue={imgUrl} />
+        <input className="form-control" name="imgUrl" defaultValue={imgUrl} />
         <label>Description:</label>
-        <textarea name="description" defaultValue={description} />
+        <textarea className="form-control" name="description" defaultValue={description} />
         <button type="submit" >SUBMIT</button>
         <button type="button" onClick={props.cancel}>CANCEL</button>
     </form>

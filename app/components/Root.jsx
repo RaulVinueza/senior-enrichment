@@ -24,9 +24,9 @@ export default class Root extends Component {
   render(){
     return (
       <div>
-        <nav>
-          <NavLink to="/home"> Home</NavLink>
-          <NavLink to="/students"> Students</NavLink>
+        <nav className="nav nav-pills justify-content-end">
+          <NavLink className="nav-link" to="/home"> Home</NavLink>
+          <NavLink className="nav-link" to="/students"> Students</NavLink>
         </nav>
           <Route path="/home" component={CampusList} />
           <Route path="/add/campus" component={AddCampusForm} />

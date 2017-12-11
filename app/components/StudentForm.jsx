@@ -9,13 +9,13 @@ export default function StudentForm(props){
     return (
         <form onSubmit={ evt => {evt.preventDefault(); props.handleSubmit(evt)}}>
             <label>First Name:</label>
-            <input name="firstName" defaultValue={firstName} />
+            <input className="form-control" name="firstName" defaultValue={firstName} />
             <label>Last Name:</label>
-            <input name="lastName" defaultValue={lastName} />
+            <input className="form-control" name="lastName" defaultValue={lastName} />
             <label>Email: </label>
-            <input name="email" defaultValue={email} />
+            <input className="form-control" name="email" defaultValue={email} />
             <label>GPA: </label>
-            <input name="gpa" type="number" defaultValue={gpa} />
+            <input className="form-control" name="gpa" type="number" defaultValue={gpa} />
             <label>Campus:</label>
             <select name="campus" defaultValue={campusId}>
                 {props.campuses.map(campus => {
